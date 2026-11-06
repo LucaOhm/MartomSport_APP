@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<title>MartomSport – Fitness MVP</title>
+<style>
+  :root{
+    --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+    --accent:#22c55e; --accent2:#38bdf8; --danger:#f87171; --line:#334155;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  #app{max-width:480px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
+  header{padding:calc(env(safe-area-inset-top) + 16px) 20px 8px}
+  header h1{margin:0;font-size:22px}
+  header p{margin:2px 0 0;color:var(--muted);font-size:14px}
+  main{flex:1;padding:12px 16px 100px}
+  .card{background:var(--card);border-radius:16px;padding:16px;margin-bottom:12px}
+  .card h2{margin:0 0 10px;font-size:16px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .stat{background:var(--card);border-radius:16px;padding:14px 8px;text-align:center}
+  .stat b{display:block;font-size:24px;color:var(--accent)}
+  .stat span{font-size:12px;color:var(--muted)}
+  .bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width .4s}
+  button{font:inherit;border:0;border-radius:12px;padding:14px 16px;background:var(--accent);
+    color:#052e16;font-weight:700;width:100%;cursor:pointer}
+  button.sec{background:var(--line);color:var(--text)}
+  button.small{width:auto;padding:8px 12px;font-size:13px}
+  .row{display:flex;gap:8px;align-items:center}
+  .row>*{flex:1}
+  input,select{font:inherit;width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);
+    background:var(--bg);color:var(--text);margin-bottom:8px}
+  label{font-size:13px;color:var(--muted)}
+  .item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:0}
+  .item small{color:var(--muted);display:block}
+  .del{background:none;color:var(--danger);width:auto;padding:4px 8px;font-size:18px}
+  .timer{font-size:56px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;margin:8px 0 12px}
+  .phase{text-align:center;color:var(--muted);margin-bottom:8px}
+  .empty{color:var(--muted);text-align:center;padding:16px 0;font-size:14px}
+  nav{position:fixed;bottom:0;left:0;right:0;background:#0b1220;border-top:1px solid var(--line);
+    padding-bottom:env(safe-area-inset-bottom)}
+  nav div{max-width:480px;margin:0 auto;display:flex}
+  nav button{background:none;color:var(--muted);border-radius:0;padding:12px 4px;font-size:12px;font-weight:600}
+  nav button.on{color:var(--accent)}
+  nav button span{display:block;font-size:22px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>🏋️ MartomSport</h1>
+    <p id="greet"></p>
+  </header>
+  <main>
+    <!-- HOME -->
+    <section id="tab-home">
+      <div class="stats">
+        <div class="stat"><b id="sWeek">0</b><span>Workouts / Woche</span></div>
+        <div class="stat"><b id="sStreak">0</b><span>Tage Streak</span></div>
+        <div class="stat"><b id="sMin">0</b><span>Minuten gesamt</span></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <h2>Wochenziel: <span id="goalTxt"></span> Workouts</h2>
+        <div class="bar"><i id="goalBar"></i></div>
+        <div class="row" style="margin-top:12px">
+          <button class="sec small" onclick="changeGoal(-1)">− Ziel</button>
+          <button class="sec small" onclick="changeGoal(1)">+ Ziel</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Letzte Workouts</h2>
+        <div id="recent"></div>
+      </div>
+    </section>
+
+    <!-- LOG -->
+    <section id="tab-log" class="hidden">
+      <div class="card">
+        <h2>Workout eintragen</h2>
+        <label>Übung</label>
+        <select id="wType">
+          <option>Laufen</option><option>Krafttraining</option><option>Radfahren</option>
+          <option>Schwimmen</option><option>Yoga</option><option>HIIT</option><option>Fußball</option>
+        </select>
+        <label>Dauer (Minuten)</label>
+        <input id="wMin" type="number" inputmode="numeric" min="1" value="30">
+        <label>Notiz (optional)</label>
+        <input id="wNote" type="text" placeholder="z. B. 5 km locker">
+        <button onclick="addWorkout()">Speichern</button>
+      </div>
+      <div class="card">
+        <h2>Verlauf</h2>
+        <div id="history"></div>
+      </div>
+    </section>
+
+    <!-- TIMER -->
+    <section id="tab-timer" class="hidden">
+      <div class="card">
+        <h2>Intervall-Timer</h2>
+        <div class="row">
+          <div><label>Belastung (Sek.)</label><input id="tWork" type="number" inputmode="numeric" value="30"></div>
+          <div><label>Pause (Sek.)</label><input id="tRest" type="number" inputmode="numeric" value="10"></div>
+          <div><label>Runden</label><input id="tRounds" type="number" inputmode="numeric" value="8"></div>
+        </div>
+        <div class="phase" id="tPhase">Bereit</div>
+        <div class="timer" id="tClock">00:30</div>
+        <div class="row">
+          <button id="tBtn" onclick="toggleTimer()">Start</button>
+          <button class="sec" onclick="resetTimer()">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL -->
+    <section id="tab-profile" class="hidden">
+      <div class="card">
+        <h2>Profil</h2>
+        <label>Dein Name</label>
+        <input id="pName" type="text" placeholder="Name">
+        <button onclick="saveName()">Speichern</button>
+      </div>
+      <div class="card">
+        <h2>Daten</h2>
+        <p style="color:var(--muted);font-size:14px;margin-top:0">
+          Alles wird nur lokal in deinem Browser gespeichert. Es gibt keinen Server.</p>
+        <button class="sec" onclick="resetAll()">Alle Daten löschen</button>
+      </div>
+    </section>
+  </main>
+
+  <nav><div>
+    <button class="on" data-tab="home"><span>🏠</span>Start</button>
+    <button data-tab="log"><span>➕</span>Eintragen</button>
+    <button data-tab="timer"><span>⏱️</span>Timer</button>
+    <button data-tab="profile"><span>👤</span>Profil</button>
+  </div></nav>
+</div>
+
+<script>
+// ---------- Storage (mit Fallback, falls blockiert) ----------
+const KEY = "martomsport_mvp";
+let mem = null;
+function load(){
+  try{ const r = localStorage.getItem(KEY); if(r) return JSON.parse(r); }catch(e){}
+  return mem || {name:"", goal:3, workouts:[]};
+}
+function save(){
+  mem = state;
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+}
+let state = load();
+
+// ---------- Helfer ----------
+const $ = id => document.getElementById(id);
+const dayKey = d => { const x=new Date(d); return x.getFullYear()+"-"+(x.getMonth()+1)+"-"+x.getDate(); };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDate = t => new Date(t).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"});
+
+function weekStart(){
+  const d = new Date(); d.setHours(0,0,0,0);
+  d.setDate(d.getDate() - ((d.getDay()+6)%7)); // Montag
+  return d.getTime();
+}
+function streak(){
+  const days = new Set(state.workouts.map(w=>dayKey(w.t)));
+  let n=0, d=new Date();
+  if(!days.has(dayKey(d))) d.setDate(d.getDate()-1); // heute noch offen zählt nicht als Bruch
+  while(days.has(dayKey(d))){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+
+// ---------- Rendering ----------
+function render(){
+  const h = new Date().getHours();
+  const hi = h<11 ? "Guten Morgen" : h<18 ? "Hallo" : "Guten Abend";
+  $("greet").textContent = hi + (state.name ? ", "+state.name : "") + " 👋";
+
+  const ws = weekStart();
+  const week = state.workouts.filter(w=>w.t>=ws).length;
+  $("sWeek").textContent = week;
+  $("sStreak").textContent = streak();
+  $("sMin").textContent = state.workouts.reduce((a,w)=>a+w.min,0);
+  $("goalTxt").textContent = week+" / "+state.goal;
+  $("goalBar").style.width = Math.min(100, week/state.goal*100)+"%";
+
+  const list = [...state.workouts].sort((a,b)=>b.t-a.t);
+  const row = w => `<div class="item"><div><b>${esc(w.type)}</b> · ${w.min} Min
+      <small>${fmtDate(w.t)}${w.note ? " – "+esc(w.note) : ""}</small></div>
+      <button class="del" aria-label="Löschen" onclick="delWorkout(${w.t})">✕</button></div>`;
+  $("recent").innerHTML = list.slice(0,3).map(row).join("") || '<div class="empty">Noch keine Workouts. Trag dein erstes ein!</div>';
+  $("history").innerHTML = list.map(row).join("") || '<div class="empty">Noch nichts eingetragen.</div>';
+  $("pName").value = state.name;
+}
+
+// ---------- Aktionen ----------
+function addWorkout(){
+  const min = parseInt($("wMin").value,10);
+  if(!min || min<1){ alert("Bitte eine Dauer in Minuten eingeben."); return; }
+  state.workouts.push({t:Date.now(), type:$("wType").value, min, note:$("wNote").value.trim()});
+  $("wNote").value="";
+  save(); render(); show("home");
+}
+function delWorkout(t){ state.workouts = state.workouts.filter(w=>w.t!==t); save(); render(); }
+function changeGoal(d){ state.goal = Math.max(1, Math.min(14, state.goal+d)); save(); render(); }
+function saveName(){ state.name = $("pName").value.trim(); save(); render(); show("home"); }
+function resetAll(){
+  if(confirm("Wirklich alle Daten löschen?")){ state={name:"",goal:3,workouts:[]}; save(); render(); }
+}
+
+// ---------- Navigation ----------
+function show(tab){
+  ["home","log","timer","profile"].forEach(t=>$("tab-"+t).classList.toggle("hidden",t!==tab));
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===tab));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.tab)));
+
+// ---------- Intervall-Timer ----------
+let tInt=null, tPhase="idle", tLeft=0, tRound=0, tCfg={};
+const mmss = s => String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+function beep(){ try{ navigator.vibrate && navigator.vibrate(200);
+  const c=new (window.AudioContext||window.webkitAudioContext)(), o=c.createOscillator();
+  o.connect(c.destination); o.frequency.value=880; o.start(); setTimeout(()=>{o.stop();c.close();},150);}catch(e){} }
+function readCfg(){
+  tCfg = {work:Math.max(1,+$("tWork").value||30), rest:Math.max(0,+$("tRest").value||0), rounds:Math.max(1,+$("tRounds").value||1)};
+}
+function paintTimer(){
+  $("tClock").textContent = mmss(tLeft);
+  $("tPhase").textContent = tPhase==="work" ? `💪 Belastung – Runde ${tRound}/${tCfg.rounds}`
+    : tPhase==="rest" ? `😮‍💨 Pause – Runde ${tRound}/${tCfg.rounds}`
+    : tPhase==="done" ? "✅ Geschafft!" : "Bereit";
+  $("tBtn").textContent = tInt ? "Pause" : (tPhase==="idle"||tPhase==="done" ? "Start" : "Weiter");
+}
+function tick(){
+  tLeft--;
+  if(tLeft>0){ paintTimer(); return; }
+  beep();
+  if(tPhase==="work" && tCfg.rest>0){ tPhase="rest"; tLeft=tCfg.rest; }
+  else if(tRound<tCfg.rounds){ tRound++; tPhase="work"; tLeft=tCfg.work; }
+  else { clearInterval(tInt); tInt=null; tPhase="done"; tLeft=0; }
+  paintTimer();
+}
+function toggleTimer(){
+  if(tInt){ clearInterval(tInt); tInt=null; paintTimer(); return; }
+  if(tPhase==="idle"||tPhase==="done"){ readCfg(); tRound=1; tPhase="work"; tLeft=tCfg.work; }
+  tInt=setInterval(tick,1000); paintTimer();
+}
+function resetTimer(){ clearInterval(tInt); tInt=null; tPhase="idle"; readCfg(); tLeft=tCfg.work; paintTimer(); }
+
+render(); resetTimer();
+</script>
+</body>
+</html>
