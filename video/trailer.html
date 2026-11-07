@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARTOM App – Pitch Trailer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D10;--d2:#16191F;--d3:#2A2D33;--blue:#0566E0;--blue2:#2E7BFF;--star:#FDCC0D;--ok:#108474;--mut:#9AA3AF;--font:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:#fff;font-family:var(--font);overflow:hidden}
+#wrap{position:fixed;inset:0;display:grid;place-items:center}
+#stage{width:1600px;height:900px;position:relative;overflow:hidden;background:radial-gradient(1100px 700px at 72% 28%,#132341 0%,var(--bg) 62%)}
+.sc{position:absolute;inset:0;visibility:hidden}
+[data-in]{will-change:transform,opacity}
+.wide{font-stretch:125%}
+.kick{font-size:22px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--star)}
+h1{font-size:96px;font-weight:900;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:72px;font-weight:850;line-height:1.04;letter-spacing:-.01em}
+.mut{color:var(--mut)}
+.blue{color:var(--blue2)}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:26px;padding:0 140px}
+.split{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:110px;padding:0 120px}
+.split .tx{width:660px}
+.split h2{margin:18px 0 22px}
+.split p{font-size:28px;color:#C9CED6;line-height:1.4}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.chips span{font-size:20px;font-weight:700;background:var(--d3);border-radius:99px;padding:10px 18px}
+svg.logo{fill:#fff;display:block}
+/* phone */
+.ph{width:330px;height:680px;border-radius:46px;border:10px solid #22262d;background:#fff;color:#0B0D10;overflow:hidden;position:relative;box-shadow:0 40px 120px rgba(0,0,0,.6);flex:none}
+.ph.dk{background:#0B0D10;color:#fff}
+.ph .bar{display:flex;justify-content:space-between;align-items:center;padding:22px 18px 6px}
+.ph .bar svg{height:13px;fill:currentColor}
+.ph .p{padding:6px 16px}
+.lbl{font-size:10px;font-weight:800;letter-spacing:.1em;color:#5B6370;text-transform:uppercase;margin:12px 0 8px}
+.dk .lbl{color:var(--mut)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:#F0F2F5;border-radius:14px;padding:12px}
+.tile b{display:block;font-size:24px;font-weight:900}
+.tile span{font-size:10px;color:#5B6370;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.ring{display:flex;align-items:center;gap:14px;background:#0B0D10;color:#fff;border-radius:16px;padding:14px}
+.ring svg{width:84px;height:84px;transform:rotate(-90deg)}
+.ring b{font-size:22px;display:block}
+.ring span{font-size:11px;color:var(--mut)}
+.ring b span,.tile b span{font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:0;text-transform:none}
+.mini{display:flex;gap:10px;align-items:center;background:#F0F2F5;border-radius:14px;padding:10px;margin-top:6px;font-size:11px}
+.mini img{width:54px;height:54px;border-radius:10px;object-fit:cover}
+.mini b{display:block;font-size:13px}
+.src{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.src span{font-size:10px;font-weight:800;background:#E3F3F0;color:var(--ok);border-radius:99px;padding:4px 8px}
+.opt{border:2px solid #E3E7ED;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700;margin-bottom:7px;display:flex;justify-content:space-between}
+.opt.on{border-color:var(--blue);background:#E4EEFC;color:var(--blue)}
+.day{display:flex;gap:10px;align-items:center;border:1px solid #E3E7ED;border-radius:12px;padding:8px 10px;margin-bottom:6px;font-size:12px}
+.day b{font-size:13px;display:block}
+.day .d{width:30px;text-align:center;font-weight:900;font-size:11px;color:#5B6370}
+.day .ok{margin-left:auto;color:var(--ok);font-weight:900}
+.orb{position:absolute;font-size:20px;font-weight:800;background:#fff;color:#0B0D10;border-radius:99px;padding:12px 20px;box-shadow:0 18px 40px rgba(0,0,0,.45);white-space:nowrap;display:flex;gap:8px;align-items:center}
+.orb i{width:10px;height:10px;border-radius:50%;background:var(--ok);display:inline-block}
+.board{background:var(--d3);border-radius:16px;padding:10px 12px;position:relative;height:208px;margin-top:8px}
+.board h5{font-size:9.5px;letter-spacing:.1em;color:var(--mut);margin-bottom:6px}
+.br{position:absolute;left:12px;right:12px;height:34px;display:flex;align-items:center;gap:10px;font-size:14px}
+.br .a{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff}
+.br.me{color:var(--star);font-weight:800}
+.chal{background:var(--d3);border-radius:16px;padding:12px;margin-top:10px}
+.chal b{font-size:14px}
+.chal .t{height:7px;background:#3a3e46;border-radius:4px;margin-top:8px;overflow:hidden}
+.chal .t i{display:block;height:100%;background:var(--ok);width:0}
+.clubrow{display:flex;gap:8px;margin-top:10px}
+.clubrow span{flex:1;background:var(--d3);border-radius:12px;padding:9px 6px;font-size:10.5px;font-weight:800;text-align:center}
+.prod{width:540px;height:540px;border-radius:40px;background:#fff;position:relative;flex:none}
+.prod img{width:100%;height:100%;object-fit:contain;padding:40px}
+.nc{position:absolute;background:#fff;color:#0B0D10;border-radius:20px;padding:16px 20px;width:370px;box-shadow:0 30px 80px rgba(0,0,0,.45);display:flex;gap:14px;align-items:center}
+.nc .i{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;flex:none}
+.nc b{font-size:19px;display:block}
+.nc span{font-size:15px;color:#5B6370}
+/* MARTOM benefits */
+.ben{position:absolute;left:0;right:0;top:250px;display:flex;align-items:center;gap:60px;padding:0 180px}
+.ben .ic{width:190px;height:190px;border-radius:48px;display:grid;place-items:center;font-size:96px;flex:none;background:linear-gradient(135deg,#1B2A47,#0B0D10);border:2px solid #2A3A5C}
+.ben .n{font-size:26px;font-weight:900;color:var(--star);letter-spacing:.2em}
+.ben h2{font-size:76px;margin:8px 0 14px}
+.ben p{font-size:30px;color:#C9CED6;line-height:1.35;max-width:900px}
+.dots{position:absolute;left:180px;bottom:120px;display:flex;gap:10px}
+.dots i{width:60px;height:6px;border-radius:3px;background:#2A2D33}
+.dots i.on{background:var(--star)}
+.w{font-size:136px;font-weight:900;font-stretch:125%;line-height:1.05}
+#glow{position:absolute;left:50%;top:50%;width:1200px;height:1200px;margin:-600px 0 0 -600px;border-radius:50%;background:radial-gradient(closest-side,rgba(46,123,255,.35),transparent);pointer-events:none}
+#pbar{position:absolute;left:0;bottom:0;height:5px;background:var(--blue2);width:0}
+/* UI (hidden in export) */
+#start{position:fixed;inset:0;background:rgba(11,13,16,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:10;text-align:center;padding:20px}
+#start svg{width:min(520px,80vw)}
+#start p{color:var(--mut);max-width:620px;line-height:1.5}
+.bt{font:inherit;font-weight:800;font-size:20px;border:0;border-radius:16px;padding:18px 30px;background:var(--blue);color:#fff;cursor:pointer}
+body.playing{cursor:none}
+body.export #start,body.export #pbar{display:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><g id="lg"><polygon points="217,271 286,203 365,283 219,429 217,429"/><polygon points="301,187 380,108 544,271 544,429"/><polygon points="490,187 570,108 734,271 734,429"/><text x="830" y="322" textLength="953" lengthAdjust="spacing" style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:700;font-size:146px">MARTOM</text></g></defs></svg>
+<div id="wrap"><div id="stage">
+
+<!-- 1 Hook (0–4) -->
+<section class="sc" id="s1" data-t="0" data-e="4"><div class="center">
+  <h1 data-in=".3" data-a="up">¿Y si cada equipo MARTOM…</h1>
+  <h1 class="blue" data-in="1.7" data-a="up">…viniera con su coach<br>y su comunidad?</h1></div></section>
+
+<!-- 2 Problem (4–10) -->
+<section class="sc" id="s2" data-t="4" data-e="10"><div class="split">
+  <div class="tx"><div class="kick" data-in=".2">Hoy</div>
+    <h2 data-in=".4">Vendemos un gran equipo.</h2>
+    <h2 class="mut" data-in="2.2">Después de la entrega,<br>el cliente queda solo.</h2></div>
+  <div class="prod" data-in=".3" data-a="scale" id="p2"><img src="https://cdn.shopify.com/s/files/1/0865/7898/7329/files/1.jpg?v=1750446858&width=900" alt=""></div></div></section>
+
+<!-- 3 Reveal (10–16) -->
+<section class="sc" id="s3" data-t="10" data-e="16"><div class="split">
+  <div class="tx"><svg class="logo" viewBox="200 92 1600 352" style="width:420px" data-in=".2" data-a="left"><use href="#lg"/></svg>
+    <h2 data-in=".8" style="margin-top:34px">La app que acompaña<br>a cada cliente.</h2>
+    <div class="chips" data-in="1.8"><span>Su equipo</span><span>Su coach</span><span>Su comunidad</span></div></div>
+  <div class="ph" data-in="1" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px">Hola, Camila 👋</b></div>
+    <div class="p"><div class="lbl">Tu semana</div>
+      <div class="ring"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" stroke="#2A2D33" stroke-width="10" fill="none"/><circle id="ring3" cx="42" cy="42" r="34" stroke="#2E7BFF" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg>
+        <div><b><span id="c3a">0</span>/4 entrenos</b><span>Meta semanal</span></div></div>
+      <div class="lbl">Hoy</div>
+      <div class="tiles"><div class="tile"><b id="c3b">0</b><span>min</span></div><div class="tile"><b id="c3c">0</b><span>kcal</span></div><div class="tile"><b>🔥 <span id="c3d">0</span></b><span>días racha</span></div><div class="tile"><b>#<span id="c3e">9</span></b><span>ranking</span></div></div>
+      <div class="lbl">Conectado</div><div class="src"><span>● SMARTRUN</span><span>● Apple Health</span><span>● Garmin</span></div>
+      <div class="lbl">Entreno de hoy</div>
+      <div class="mini"><img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=200&q=70&auto=format&fit=crop" alt=""><div><b>Intervalos 5K</b>21 min · Coach Nico</div><span style="margin-left:auto;width:30px;height:30px;border-radius:50%;background:#0566E0;color:#fff;display:grid;place-items:center">▶</span></div>
+      <div class="mini"><span style="font-size:24px">🏆</span><div><b>Desafío 50 km</b>39/50 km · 1.243 atletas</div></div></div></div></div></section>
+
+<!-- 4 Plan (16–22) -->
+<section class="sc" id="s4" data-t="16" data-e="22"><div class="split">
+  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 01</div>
+    <h2 data-in=".3">Un plan 100 %<br>a su medida.</h2>
+    <p data-in=".8">Objetivo, días, nivel y equipos: el plan se arma solo y se adapta cada semana.</p></div>
+  <div class="ph" data-in=".2" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px">Crear mi plan</b></div>
+    <div class="p" id="wiz"><div class="lbl">Tu objetivo</div>
+      <div class="opt" data-k="0">🏃 Correr mis primeros 5K <span>✓</span></div><div class="opt">💪 Ganar fuerza</div><div class="opt">🔥 Bajar de peso</div>
+      <div class="lbl">Días por semana</div><div class="opt" data-k="1" style="justify-content:center">3 · <b>4</b> · 5</div>
+      <div class="lbl" data-in="3" data-a="fade">✓ Tu plan está listo</div>
+      <div class="day" data-in="3.2"><span class="d">LUN</span><div><b>Intervalos 5K</b>21 min · SMARTRUN</div><span class="ok">✓</span></div>
+      <div class="day" data-in="3.45"><span class="d">MIÉ</span><div><b>Fuerza tren superior</b>16 min · BENCH</div></div>
+      <div class="day" data-in="3.7"><span class="d">VIE</span><div><b>Poder en subida</b>25 min · SMARTRUN</div></div></div></div></div></section>
+
+<!-- 5 Monitoring (22–28) -->
+<section class="sc" id="s5" data-t="22" data-e="28"><div class="split">
+  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 02</div>
+    <h2 data-in=".3">Todo su progreso,<br>en un solo lugar.</h2>
+    <p data-in=".8">Dashboard con pulso, calorías y récords. Se conecta con sus relojes y sensores.</p></div>
+  <div style="position:relative;width:560px;height:700px;display:grid;place-items:center">
+    <div class="ph dk" data-in=".2" data-a="scale"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px;color:#9AA3AF">Monitoreo</b></div>
+      <div class="p"><div class="lbl">Pulso en vivo</div><div style="font-size:54px;font-weight:900">♥ <span id="hr5">72</span></div>
+        <svg viewBox="0 0 300 80" style="width:100%;height:80px;margin-top:6px"><polyline id="ecg" fill="none" stroke="#2E7BFF" stroke-width="3" points=""/></svg>
+        <div class="lbl">Esta semana</div>
+        <div class="tiles" style="--x:1"><div class="tile" style="background:#2A2D33"><b id="c5a">0</b><span style="color:#9AA3AF">km</span></div><div class="tile" style="background:#2A2D33"><b id="c5b">0</b><span style="color:#9AA3AF">kcal</span></div></div>
+        <div class="lbl">Récord personal</div><div style="font-size:22px;font-weight:900;color:#FDCC0D">5K · 27:40 🏆</div></div></div>
+    <div class="orb" data-in="1.2" data-a="pop" style="left:-120px;top:40px"><i></i>Apple Health</div>
+    <div class="orb" data-in="1.5" data-a="pop" style="right:-40px;top:150px"><i></i>Garmin</div>
+    <div class="orb" data-in="1.8" data-a="pop" style="left:-60px;top:330px"><i></i>Strava</div>
+    <div class="orb" data-in="2.1" data-a="pop" style="right:-60px;top:420px"><i></i>Google Health Connect</div>
+    <div class="orb" data-in="2.4" data-a="pop" style="left:-10px;bottom:90px"><i></i>Banda de pulso</div>
+    <div class="orb" data-in="2.7" data-a="pop" style="right:0;bottom:40px"><i></i>Polar · Fitbit</div></div></div></section>
+
+<!-- 6 Community (28–34) -->
+<section class="sc" id="s6" data-t="28" data-e="34"><div class="split">
+  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 03</div>
+    <h2 data-in=".3">Una comunidad<br>que engancha.</h2>
+    <p data-in=".8">Clubs, desafíos y rankings en vivo: competir, compartir y volver cada día.</p>
+    <div class="chips" data-in="1.4"><span>🤝 Clubs</span><span>🏆 Desafíos</span><span>⚡ Ranking en vivo</span><span>❤️ Kudos</span></div></div>
+  <div class="ph dk" data-in=".2" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px;color:#FDCC0D">● LIVE</b></div>
+    <div class="p"><div class="lbl">Ranking en vivo · Intervalos 5K</div>
+      <div class="board" id="board6"></div>
+      <div class="chal"><b>🏆 Desafío 50 km de noviembre</b><div class="t"><i id="ch6"></i></div><div style="font-size:11px;color:#9AA3AF;margin-top:6px"><span id="km6">0</span>/50 km</div></div>
+      <div class="clubrow"><span>Runners<br>Santiago</span><span>Strength<br>Crew</span><span>40+<br>Activos</span></div><div class="chal" style="display:flex;gap:10px;align-items:center"><span style="width:30px;height:30px;border-radius:50%;background:#E4572E;display:grid;place-items:center;font-size:10px;font-weight:800">CR</span><div style="flex:1;font-size:11px"><b style="font-size:13px">Camila R. · nuevo récord 🏔️</b><br><span style="color:#9AA3AF">2,8 km · 25:10 · MYPOWER</span></div><span style="color:#D7263D;font-size:18px">❤</span><b>24</b></div></div></div></div></section>
+
+<!-- 7 Equipment (34–38) -->
+<section class="sc" id="s7" data-t="34" data-e="38"><div class="split">
+  <div class="prod" data-in=".1" data-a="scale"><img src="https://cdn.shopify.com/s/files/1/0865/7898/7329/files/1.jpg?v=1750446858&width=900" alt="">
+    <div class="nc" data-in=".8" data-a="pop" style="left:150px;top:30px"><span class="i" style="background:#E3F3F0">✅</span><div><b>Software v2.4</b><span>Actualizado · modo Trail nuevo</span></div></div>
+    <div class="nc" data-in="1.3" data-a="pop" style="left:190px;top:220px"><span class="i" style="background:#FFF3D6">🛠️</span><div><b>Mantención en 22 km</b><span>Lubricar banda · pedir en 1 toque</span></div></div>
+    <div class="nc" data-in="1.8" data-a="pop" style="left:150px;top:410px"><span class="i" style="background:#E4EEFC">📘</span><div><b>Manual digital</b><span>Instalación y técnica animada</span></div></div></div>
+  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 04</div><h2 data-in=".3">Su equipo,<br>siempre al día.</h2></div></div></section>
+
+<!-- 8 Benefits for MARTOM (38–48) -->
+<section class="sc" id="s8" data-t="38" data-e="48">
+  <div style="position:absolute;left:180px;top:120px" data-in=".1"><div class="kick">Para MARTOM</div><div style="font-size:40px;font-weight:800;margin-top:10px">El valor real de la app</div></div>
+  <div class="ben" data-b="0"><div class="ic">❤️</div><div><div class="n">01 · FIDELIZACIÓN</div><h2>Clientes que vuelven cada día.</h2><p>El equipo se usa más, la satisfacción sube y las devoluciones bajan.</p></div></div>
+  <div class="ben" data-b="1"><div class="ic">🚀</div><div><div class="n">02 · NUEVOS PRODUCTOS</div><h2>Un canal propio de ventas.</h2><p>MARTOM+, accesorios, proteína, nutrición y recovery: ingresos recurrentes.</p></div></div>
+  <div class="ben" data-b="2"><div class="ic">🤝</div><div><div class="n">03 · COMUNIDAD</div><h2>Embajadores que atraen clientes.</h2><p>Clubs, desafíos y referidos convierten a los dueños en la mejor publicidad.</p></div></div>
+  <div class="ben" data-b="3"><div class="ic">🛡️</div><div><div class="n">04 · CONFIANZA</div><h2>Calidad que se siente.</h2><p>Manual digital, mantención y soporte: el cliente confía en su MARTOM.</p></div></div>
+  <div class="ben" data-b="4"><div class="ic">📣</div><div><div class="n">05 · MARKETING</div><h2>Cada entreno compartido es publicidad.</h2><p>Contenido real de clientes reales, más datos para conocer mejor el mercado.</p></div></div>
+  <div class="dots" id="dots8"><i></i><i></i><i></i><i></i><i></i></div></section>
+
+<!-- 9 Claim (48–52) -->
+<section class="sc" id="s9" data-t="48" data-e="52"><div class="center" style="gap:0">
+  <div class="w" data-in=".1" data-a="up">Fidelizar.</div><div class="w blue" data-in=".9" data-a="up">Atraer.</div><div class="w" style="color:var(--star)" data-in="1.7" data-a="up">Convencer.</div></div></section>
+
+<!-- 10 Logo (52–57) -->
+<section class="sc" id="s10" data-t="52" data-e="57.2"><div id="glow" data-in="0" data-a="fade" data-d="1.2"></div><div class="center">
+  <svg class="logo" viewBox="200 92 1600 352" style="width:1100px" data-in="0" data-a="logo" data-d="1.1"><use href="#lg"/></svg></div></section>
+
+<div id="pbar"></div>
+</div></div>
+
+<div id="start"><svg class="logo" viewBox="200 92 1600 352"><use href="#lg"/></svg>
+  <button class="bt" id="play">▶ Reproducir tráiler (57 s · con música)</button>
+  <p>Vista previa del tráiler. El archivo de video final está en <b>video/martom-trailer-es.mp4</b>.</p></div>
+
+<script>
+const LEN = 57.2;
+const $ = s => document.querySelector(s);
+const clamp = x => Math.max(0, Math.min(1, x));
+const ease = x => 1 - Math.pow(1 - x, 3);
+const back = x => { const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const scenes = [...document.querySelectorAll('.sc')].map(el => ({el, t:+el.dataset.t, e:+el.dataset.e, items:[...el.querySelectorAll('[data-in]')]}));
+const seeded = n => { const x = Math.sin(n * 12.9898) * 43758.5453; return x - Math.floor(x); };
+
+function anim(n, lt) {
+  const i = +n.dataset.in, d = +(n.dataset.d || .7), a = n.dataset.a || 'up';
+  const raw = clamp((lt - i) / d), p = ease(raw);
+  let o = p, tr = '';
+  if (a === 'up') tr = `translateY(${(1 - p) * 60}px)`;
+  if (a === 'left') tr = `translateX(${(1 - p) * -80}px)`;
+  if (a === 'scale') tr = `scale(${.85 + .15 * p})`;
+  if (a === 'pop') { const b = raw < 1 ? back(raw) : 1; tr = `scale(${.4 + .6 * b})`; o = clamp(raw * 2); }
+  if (a === 'logo') { tr = `scale(${1.25 - .25 * p})`; n.style.filter = `blur(${(1 - p) * 14}px)`; }
+  n.style.opacity = o; n.style.transform = tr;
+}
+const count = (id, to, lt, t0, d = 1.4, dec = 0) => { const e = document.getElementById(id); if (e) e.textContent = (to * ease(clamp((lt - t0) / d))).toFixed(dec).replace('.', ','); };
+
+const FX = {
+  s2(lt) { const p = clamp((lt - 2.2) / 1.6); $('#p2').style.filter = `grayscale(${p}) brightness(${1 - .45 * p})`; },
+  s3(lt) { const p = ease(clamp((lt - 1.6) / 1.6)); $('#ring3').setAttribute('stroke-dashoffset', 213.6 * (1 - .75 * p));
+    count('c3a', 3, lt, 1.6); count('c3b', 47, lt, 1.6); count('c3c', 412, lt, 1.6); count('c3d', 6, lt, 1.6);
+    $('#c3e').textContent = Math.round(9 - 6 * ease(clamp((lt - 2.2) / 1.6))); },
+  s4(lt) { document.querySelectorAll('#wiz .opt').forEach((o, i) => o.classList.toggle('on', (i === 0 && lt > 1.2) || (o.dataset.k === '1' && lt > 2.2))); },
+  s5(lt) { $('#hr5').textContent = Math.round(72 + 70 * ease(clamp((lt - .6) / 2)) + 3 * Math.sin(lt * 7));
+    const pts = []; for (let x = 0; x <= 300; x += 3) { const ph = (x / 300 * 4 + lt * 1.6) % 1; const y = ph > .42 && ph < .46 ? 10 : ph > .46 && ph < .5 ? 70 : 42 + 4 * Math.sin(ph * 30); pts.push(x + ',' + y); }
+    $('#ecg').setAttribute('points', pts.join(' ')); count('c5a', 18.4, lt, .8, 1.6, 1); count('c5b', 1840, lt, .8, 1.6); },
+  s6(lt) {
+    const R = [['Camila R.','#E4572E',1.05],['Matías G.','#7B2CBF',1],['Coach Nico','#2A2D33',.97],['TÚ','#0566E0',1.32]];
+    const pts = R.map((r, i) => 120 - i * 9 + r[2] * lt * 14 + 2 * Math.sin(lt * 3 + i));
+    const order = pts.map((p, i) => [p, i]).sort((a, b) => b[0] - a[0]);
+    const b = $('#board6');
+    if (!b.children.length) b.innerHTML = '<h5>1.284 EN LÍNEA</h5>' + R.map((r, i) => `<div class="br ${i === 3 ? 'me' : ''}" id="b6${i}"><span class="r"></span><span class="a" style="background:${r[1]}">${r[0].split(' ').map(x => x[0]).join('')}</span><span style="flex:1">${r[0]}</span><b class="v"></b></div>`).join('');
+    order.forEach(([p, i], pos) => { const el = document.getElementById('b6' + i); el.style.top = (24 + pos * 44) + 'px'; el.querySelector('.r').textContent = pos + 1; el.querySelector('.v').textContent = Math.round(p); });
+    const c = ease(clamp((lt - 1) / 3)); $('#ch6').style.width = (20 + 58 * c) + '%'; $('#km6').textContent = Math.round(10 + 29 * c); },
+  s8(lt) {
+    const per = 1.9, t0 = 1.0;
+    document.querySelectorAll('#s8 .ben').forEach((el, i) => {
+      const s = t0 + i * per, inP = ease(clamp((lt - s) / .55)), outP = i < 4 ? ease(clamp((lt - s - per + .35) / .45)) : 0;
+      el.style.opacity = inP * (1 - outP); el.style.transform = `translateX(${(1 - inP) * 160 - outP * 160}px)`;
+      el.querySelector('.ic').style.transform = `scale(${.7 + .3 * inP}) rotate(${(1 - inP) * -12}deg)`;
+    });
+    const cur = Math.max(-1, Math.min(4, Math.floor((lt - t0) / per)));
+    document.querySelectorAll('#dots8 i').forEach((d, i) => d.classList.toggle('on', i <= cur));
+  },
+  s10(lt) { $('#glow').style.transform = `scale(${.8 + .3 * Math.sin(lt * 1.2) * .3 + .2 * ease(clamp(lt / 1.5))})`; },
+};
+
+function render(t) {
+  scenes.forEach(sc => {
+    const vis = t >= sc.t && t < sc.e;
+    sc.el.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    const lt = t - sc.t, fade = Math.min(clamp(lt / .3), clamp((sc.e - t) / .35));
+    sc.el.style.opacity = sc.el.id === 's1' ? clamp((sc.e - t) / .35) : fade;
+    sc.items.forEach(n => anim(n, lt));
+    if (FX[sc.el.id]) FX[sc.el.id](lt);
+  });
+  $('#pbar').style.width = clamp(t / LEN) * 100 + '%';
+}
+
+/* ---------- Cinematic build-up music (Web Audio, original composition) ---------- */
+function buildMusic(ctx, len) {
+  const out = ctx.createGain(); out.connect(ctx.destination);
+  out.gain.setValueAtTime(0, 0); out.gain.linearRampToValueAtTime(.9, 1.2); out.gain.setValueAtTime(.9, len - 2.2); out.gain.linearRampToValueAtTime(0, len);
+  const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 4; comp.connect(out);
+  // reverb
+  const rv = ctx.createConvolver(), irL = 3.2 * ctx.sampleRate, ir = ctx.createBuffer(2, irL, ctx.sampleRate);
+  for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); for (let i = 0; i < irL; i++) d[i] = (seeded(i * (c + 1) + 3) * 2 - 1) * Math.pow(1 - i / irL, 2.6); }
+  rv.buffer = ir; const rvG = ctx.createGain(); rvG.gain.value = .5; rv.connect(rvG); rvG.connect(comp);
+  const bus = (wet = .4) => { const g = ctx.createGain(); g.connect(comp); const s = ctx.createGain(); s.gain.value = wet; g.connect(s); s.connect(rv); return g; };
+  const f = n => 440 * Math.pow(2, (n - 69) / 12);
+  const noise = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate); const nd = noise.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = seeded(i + 11) * 2 - 1;
+  const BEAT = .5, BAR = 2; // 120 BPM
+  const CH = [[50,53,57],[46,50,53],[53,57,60],[48,52,55]]; // Dm Bb F C (2 bars each)
+  const RT = [38,34,41,36];
+  const chordAt = t => Math.floor(t / 4) % 4;
+  // pad with opening filter
+  const padF = ctx.createBiquadFilter(); padF.type = 'lowpass'; padF.Q.value = 2;
+  padF.frequency.setValueAtTime(380, 0); padF.frequency.linearRampToValueAtTime(900, 16); padF.frequency.linearRampToValueAtTime(1800, 34); padF.frequency.linearRampToValueAtTime(3600, 51.5);
+  const padBus = bus(.6); padF.connect(padBus);
+  for (let t = 0; t < 52; t += 4) { const c = CH[chordAt(t)];
+    [...c, c[0] - 12, c[0] + 12].forEach(n => [-6, 6].forEach(dt => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.value = f(n); o.detune.value = dt;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.022, t + .8); g.gain.setValueAtTime(.022, t + 3.4); g.gain.linearRampToValueAtTime(0, t + 4.1);
+      o.connect(g); g.connect(padF); o.start(t); o.stop(t + 4.2); })); }
+  // piano-like arpeggio
+  const pianoBus = bus(.55);
+  const pluck = (t, n, v) => { [1, 2, 3].forEach((h, k) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = k ? 'sine' : 'triangle'; o.frequency.value = f(n) * h;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v / (k * 2 + 1), t + .006); g.gain.exponentialRampToValueAtTime(.0001, t + 1.4 / h); o.connect(g); g.connect(pianoBus); o.start(t); o.stop(t + 1.5); }); };
+  for (let t = 0; t < 52; t += BEAT / 2) { const c = CH[chordAt(t)], i = Math.round(t / (BEAT / 2)) % 8, pat = [0,1,2,1,0,2,1,2][i];
+    if (t < 4 && i % 2) continue;
+    pluck(t, c[pat] + 12 + (t >= 34 && i >= 4 ? 12 : 0), t < 16 ? .07 : .055); }
+  // pulse bass
+  const bassBus = bus(.05);
+  for (let t = 16; t < 52; t += BEAT / 2) { const r = RT[chordAt(t)], o = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.value = f(r); lp.type = 'lowpass'; lp.frequency.value = t < 34 ? 420 : 700;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.16, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + .22); o.connect(lp); lp.connect(g); g.connect(bassBus); o.start(t); o.stop(t + .25); }
+  // drums
+  const drum = bus(.15);
+  const kick = (t, v = .9) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(40, t + .18); g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.001, t + .45); o.connect(g); g.connect(drum); o.start(t); o.stop(t + .5); };
+  const nz = (t, freq, type, v, d) => { const s = ctx.createBufferSource(), fl = ctx.createBiquadFilter(), g = ctx.createGain(); s.buffer = noise; fl.type = type; fl.frequency.value = freq; g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.001, t + d); s.connect(fl); fl.connect(g); g.connect(drum); s.start(t, seeded(t) * 1.5); s.stop(t + d + .02); };
+  const tom = (t, fr) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(fr * .55, t + .3); g.gain.setValueAtTime(.55, t); g.gain.exponentialRampToValueAtTime(.001, t + .5); o.connect(g); g.connect(drum); o.start(t); o.stop(t + .55); };
+  for (let t = 16; t < 34; t += BAR) { kick(t, .7); kick(t + 1, .5); for (let h = 0; h < 8; h++) nz(t + h * BEAT / 2 + BEAT / 4, 8000, 'highpass', .05, .05); }
+  for (let t = 30; t < 34; t += BEAT) tom(t, 120 - (t - 30) * 8);
+  for (let t = 34; t < 48; t += BEAT) { kick(t); const b = Math.round((t - 34) / BEAT) % 4; if (b === 1 || b === 3) nz(t, 1800, 'bandpass', .5, .2); nz(t + BEAT / 2, 8000, 'highpass', .08, .05); }
+  for (let t = 46; t < 48; t += BEAT / 2) tom(t, 160 - (t - 46) * 30);
+  // build-up 48–52: snare roll + riser
+  for (let t = 48, step = BEAT; t < 52; t += step) { nz(t, 1700, 'bandpass', .18 + (t - 48) * .08, .15); if (t >= 50) step = BEAT / 4; else if (t >= 49) step = BEAT / 2; }
+  for (let t = 48; t < 52; t += BEAT) kick(t, .6);
+  { const s = ctx.createBufferSource(), fl = ctx.createBiquadFilter(), g = ctx.createGain(); s.buffer = noise; s.loop = true; fl.type = 'bandpass'; fl.Q.value = 3;
+    fl.frequency.setValueAtTime(300, 48); fl.frequency.exponentialRampToValueAtTime(7000, 51.95); g.gain.setValueAtTime(0, 48); g.gain.linearRampToValueAtTime(.35, 51.9); g.gain.linearRampToValueAtTime(0, 52);
+    s.connect(fl); fl.connect(g); g.connect(drum); s.start(48); s.stop(52.05); }
+  // impact at 52 + final chord
+  { const t = 52; const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.setValueAtTime(90, t); o.frequency.exponentialRampToValueAtTime(28, t + 1.8); g.gain.setValueAtTime(1.2, t); g.gain.exponentialRampToValueAtTime(.001, t + 3.5); o.connect(g); g.connect(drum); o.start(t); o.stop(t + 3.6);
+    nz(t, 900, 'lowpass', .9, 2.2);
+    [38, 50, 57, 62, 65, 69].forEach(n => [-7, 7].forEach(dt => { const o2 = ctx.createOscillator(), g2 = ctx.createGain(); o2.type = 'sawtooth'; o2.frequency.value = f(n); o2.detune.value = dt;
+      g2.gain.setValueAtTime(.03, t); g2.gain.exponentialRampToValueAtTime(.001, len); o2.connect(g2); g2.connect(padBus); o2.start(t); o2.stop(len); }));
+    pluck(t, 74, .12); pluck(t + .25, 77, .09); pluck(t + .5, 81, .08); }
+}
+function wav(buf) {
+  const ch = buf.numberOfChannels, n = buf.length, sr = buf.sampleRate, ab = new ArrayBuffer(44 + n * ch * 2), v = new DataView(ab);
+  const w = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  w(0, 'RIFF'); v.setUint32(4, 36 + n * ch * 2, true); w(8, 'WAVE'); w(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+  v.setUint32(24, sr, true); v.setUint32(28, sr * ch * 2, true); v.setUint16(32, ch * 2, true); v.setUint16(34, 16, true); w(36, 'data'); v.setUint32(40, n * ch * 2, true);
+  const data = [...Array(ch)].map((_, c) => buf.getChannelData(c)); let o = 44;
+  for (let i = 0; i < n; i++) for (let c = 0; c < ch; c++) { const s = Math.max(-1, Math.min(1, data[c][i])); v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true); o += 2; }
+  let bin = ''; const u = new Uint8Array(ab); for (let i = 0; i < u.length; i += 0x8000) bin += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+async function renderAudio() { const ctx = new OfflineAudioContext(2, Math.ceil(44100 * LEN), 44100); buildMusic(ctx, LEN); return wav(await ctx.startRendering()); }
+
+/* ---------- Stage fit, live preview, export hooks ---------- */
+function fit() { const k = Math.min(innerWidth / 1600, innerHeight / 900); $('#stage').style.transform = `scale(${k})`; }
+addEventListener('resize', fit); fit();
+window.seek = t => render(t);
+window.renderAudio = renderAudio;
+window.assetsReady = async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))); return true; };
+if (new URLSearchParams(location.search).has('export')) { document.body.classList.add('export'); render(0); }
+else {
+  render(0);
+  $('#play').onclick = () => {
+    $('#start').style.display = 'none'; document.body.classList.add('playing');
+    try { document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {}
+    const ac = new (window.AudioContext || window.webkitAudioContext)(); const g = ac.createGain(); // live: schedule relative to now
+    const off = ac.currentTime + .15;
+    const proxy = new Proxy(ac, { get(o, k) { if (k === 'destination') return o.destination; const v = o[k]; return typeof v === 'function' ? v.bind(o) : v; } });
+    // shift schedule: render offline then play buffer (keeps live == export)
+    renderAudioBuffer().then(buf => { const s = ac.createBufferSource(); s.buffer = buf; s.connect(ac.destination); const t0 = performance.now(); s.start();
+      const loop = () => { const t = (performance.now() - t0) / 1000; render(t); if (t < LEN) requestAnimationFrame(loop); else { document.body.classList.remove('playing'); $('#start').style.display = 'flex'; } }; loop(); });
+  };
+}
+async function renderAudioBuffer() { const ctx = new OfflineAudioContext(2, Math.ceil(44100 * LEN), 44100); buildMusic(ctx, LEN); return ctx.startRendering(); }
+</script>
+</body>
+</html>
