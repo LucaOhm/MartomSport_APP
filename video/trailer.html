@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MARTOM App – Pitch Trailer</title>
+<title>MARTOM App – Pitch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
@@ -88,6 +88,24 @@ svg.logo{fill:#fff;display:block}
 .w{font-size:136px;font-weight:900;font-stretch:125%;line-height:1.05}
 #glow{position:absolute;left:50%;top:50%;width:1200px;height:1200px;margin:-600px 0 0 -600px;border-radius:50%;background:radial-gradient(closest-side,rgba(46,123,255,.35),transparent);pointer-events:none}
 #pbar{position:absolute;left:0;bottom:0;height:5px;background:var(--blue2);width:0}
+.refs{position:absolute;left:0;right:0;top:330px;display:flex;justify-content:center;gap:40px}
+.ref{width:360px;height:250px;border-radius:32px;background:linear-gradient(160deg,#1B2A47,#11151C);border:2px solid #2A3A5C;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;text-align:center}
+.ref b{font-size:54px;font-weight:900;font-stretch:115%}
+.ref span{font-size:22px;color:#C9CED6;line-height:1.35}
+.sub{font-size:40px;font-weight:800}
+.cv{display:grid;grid-template-columns:300px 300px;gap:22px}
+.cv div{background:linear-gradient(160deg,#1B2A47,#11151C);border:2px solid #2A3A5C;border-radius:28px;padding:26px;height:220px;display:flex;flex-direction:column;justify-content:flex-end}
+.cv i{font-style:normal;font-size:52px;margin-bottom:auto}
+.cv b{font-size:27px;font-weight:850}
+.cv span{font-size:19px;color:var(--mut);margin-top:6px}
+.chart{width:620px}
+.chart .row{display:flex;align-items:flex-end;gap:18px;margin-bottom:36px}
+.chart em{font-style:normal;font-size:22px;font-weight:800;width:130px;color:#C9CED6;padding-bottom:6px}
+.bars{flex:1;height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:2px solid #2A2D33}
+.bars .c{flex:1;display:flex;flex-direction:column-reverse}
+.bars .c i{display:block;width:100%;border-radius:4px 4px 0 0}
+.leg{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:18px;color:#C9CED6;padding-left:148px}
+.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:8px;vertical-align:-1px}
 /* UI (hidden in export) */
 #start{position:fixed;inset:0;background:rgba(11,13,16,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:10;text-align:center;padding:20px}
 #start svg{width:min(520px,80vw)}
@@ -103,21 +121,31 @@ body.export #start,body.export #pbar{display:none}
 
 <!-- 1 Hook (0–4) -->
 <section class="sc" id="s1" data-t="0" data-e="4"><div class="center">
-  <h1 data-in=".3" data-a="up">¿Y si cada equipo MARTOM…</h1>
-  <h1 class="blue" data-in="1.7" data-a="up">…viniera con su coach<br>y su comunidad?</h1></div></section>
+  <h1 data-in=".3" data-a="up">Hoy vendemos equipos.</h1>
+  <h1 class="blue" data-in="1.7" data-a="up">¿Y si vendiéramos<br>una relación?</h1></div></section>
 
 <!-- 2 Problem (4–10) -->
 <section class="sc" id="s2" data-t="4" data-e="10"><div class="split">
-  <div class="tx"><div class="kick" data-in=".2">Hoy</div>
-    <h2 data-in=".4">Vendemos un gran equipo.</h2>
-    <h2 class="mut" data-in="2.2">Después de la entrega,<br>el cliente queda solo.</h2></div>
+  <div class="tx"><div class="kick" data-in=".2">El problema</div>
+    <h2 data-in=".4">Una venta.<br>Una sola vez.</h2>
+    <h2 class="mut" data-in="2.2" style="font-size:50px">Después de la entrega,<br>perdemos al cliente.</h2></div>
   <div class="prod" data-in=".3" data-a="scale" id="p2"><img src="https://cdn.shopify.com/s/files/1/0865/7898/7329/files/1.jpg?v=1750446858&width=900" alt=""></div></div></section>
 
-<!-- 3 Reveal (10–16) -->
-<section class="sc" id="s3" data-t="10" data-e="16"><div class="split">
+<!-- 3 Proof (10–16) -->
+<section class="sc" id="s3" data-t="10" data-e="16">
+  <div style="position:absolute;left:0;right:0;top:110px;text-align:center"><div class="kick" data-in=".1">El modelo ganador</div>
+    <h2 data-in=".3" style="margin-top:16px">Los líderes no venden solo equipos.</h2></div>
+  <div class="refs">
+    <div class="ref" data-in="1" data-a="pop"><b>Peloton</b><span>Equipo + suscripción<br>+ clases en vivo</span></div>
+    <div class="ref" data-in="1.35" data-a="pop"><b>Tonal</b><span>Gimnasio inteligente<br>+ membresía + coaching</span></div>
+    <div class="ref" data-in="1.7" data-a="pop"><b>Strava</b><span>Comunidad + desafíos<br>+ suscripción premium</span></div></div>
+  <div style="position:absolute;left:0;right:0;bottom:120px;text-align:center"><div class="sub" data-in="3">Venden una <b class="blue">relación que se renueva cada mes</b>.</div></div></section>
+
+<!-- 4 Reveal (16–22) -->
+<section class="sc" id="s4" data-t="16" data-e="22"><div class="split">
   <div class="tx"><svg class="logo" viewBox="200 92 1600 352" style="width:420px" data-in=".2" data-a="left"><use href="#lg"/></svg>
-    <h2 data-in=".8" style="margin-top:34px">La app que acompaña<br>a cada cliente.</h2>
-    <div class="chips" data-in="1.8"><span>Su equipo</span><span>Su coach</span><span>Su comunidad</span></div></div>
+    <h2 data-in=".8" style="margin-top:34px">La misma fórmula,<br>ahora para MARTOM.</h2>
+    <div class="chips" data-in="1.8"><span>Plan a medida</span><span>Monitoreo</span><span>Comunidad</span><span>Equipo conectado</span></div></div>
   <div class="ph" data-in="1" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px">Hola, Camila 👋</b></div>
     <div class="p"><div class="lbl">Tu semana</div>
       <div class="ring"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" stroke="#2A2D33" stroke-width="10" fill="none"/><circle id="ring3" cx="42" cy="42" r="34" stroke="#2E7BFF" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg>
@@ -127,76 +155,43 @@ body.export #start,body.export #pbar{display:none}
       <div class="lbl">Conectado</div><div class="src"><span>● SMARTRUN</span><span>● Apple Health</span><span>● Garmin</span></div>
       <div class="lbl">Entreno de hoy</div>
       <div class="mini"><img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=200&q=70&auto=format&fit=crop" alt=""><div><b>Intervalos 5K</b>21 min · Coach Nico</div><span style="margin-left:auto;width:30px;height:30px;border-radius:50%;background:#0566E0;color:#fff;display:grid;place-items:center">▶</span></div>
-      <div class="mini"><span style="font-size:24px">🏆</span><div><b>Desafío 50 km</b>39/50 km · 1.243 atletas</div></div></div></div></div></section>
+      <div class="mini"><span style="font-size:24px">🏆</span><div><b>Desafío de noviembre</b>Club Runners Santiago</div></div></div></div></div></section>
 
-<!-- 4 Plan (16–22) -->
-<section class="sc" id="s4" data-t="16" data-e="22"><div class="split">
-  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 01</div>
-    <h2 data-in=".3">Un plan 100 %<br>a su medida.</h2>
-    <p data-in=".8">Objetivo, días, nivel y equipos: el plan se arma solo y se adapta cada semana.</p></div>
-  <div class="ph" data-in=".2" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px">Crear mi plan</b></div>
-    <div class="p" id="wiz"><div class="lbl">Tu objetivo</div>
-      <div class="opt" data-k="0">🏃 Correr mis primeros 5K <span>✓</span></div><div class="opt">💪 Ganar fuerza</div><div class="opt">🔥 Bajar de peso</div>
-      <div class="lbl">Días por semana</div><div class="opt" data-k="1" style="justify-content:center">3 · <b>4</b> · 5</div>
-      <div class="lbl" data-in="3" data-a="fade">✓ Tu plan está listo</div>
-      <div class="day" data-in="3.2"><span class="d">LUN</span><div><b>Intervalos 5K</b>21 min · SMARTRUN</div><span class="ok">✓</span></div>
-      <div class="day" data-in="3.45"><span class="d">MIÉ</span><div><b>Fuerza tren superior</b>16 min · BENCH</div></div>
-      <div class="day" data-in="3.7"><span class="d">VIE</span><div><b>Poder en subida</b>25 min · SMARTRUN</div></div></div></div></div></section>
-
-<!-- 5 Monitoring (22–28) -->
+<!-- 5 Customer value (22–28) -->
 <section class="sc" id="s5" data-t="22" data-e="28"><div class="split">
-  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 02</div>
-    <h2 data-in=".3">Todo su progreso,<br>en un solo lugar.</h2>
-    <p data-in=".8">Dashboard con pulso, calorías y récords. Se conecta con sus relojes y sensores.</p></div>
-  <div style="position:relative;width:560px;height:700px;display:grid;place-items:center">
-    <div class="ph dk" data-in=".2" data-a="scale"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px;color:#9AA3AF">Monitoreo</b></div>
-      <div class="p"><div class="lbl">Pulso en vivo</div><div style="font-size:54px;font-weight:900">♥ <span id="hr5">72</span></div>
-        <svg viewBox="0 0 300 80" style="width:100%;height:80px;margin-top:6px"><polyline id="ecg" fill="none" stroke="#2E7BFF" stroke-width="3" points=""/></svg>
-        <div class="lbl">Esta semana</div>
-        <div class="tiles" style="--x:1"><div class="tile" style="background:#2A2D33"><b id="c5a">0</b><span style="color:#9AA3AF">km</span></div><div class="tile" style="background:#2A2D33"><b id="c5b">0</b><span style="color:#9AA3AF">kcal</span></div></div>
-        <div class="lbl">Récord personal</div><div style="font-size:22px;font-weight:900;color:#FDCC0D">5K · 27:40 🏆</div></div></div>
-    <div class="orb" data-in="1.2" data-a="pop" style="left:-120px;top:40px"><i></i>Apple Health</div>
-    <div class="orb" data-in="1.5" data-a="pop" style="right:-40px;top:150px"><i></i>Garmin</div>
-    <div class="orb" data-in="1.8" data-a="pop" style="left:-60px;top:330px"><i></i>Strava</div>
-    <div class="orb" data-in="2.1" data-a="pop" style="right:-60px;top:420px"><i></i>Google Health Connect</div>
-    <div class="orb" data-in="2.4" data-a="pop" style="left:-10px;bottom:90px"><i></i>Banda de pulso</div>
-    <div class="orb" data-in="2.7" data-a="pop" style="right:0;bottom:40px"><i></i>Polar · Fitbit</div></div></div></section>
+  <div class="tx" style="width:560px"><div class="kick" data-in=".1">Lo que gana el cliente</div>
+    <h2 data-in=".3">Una razón para<br>entrenar cada día.</h2>
+    <p data-in=".8">Más uso del equipo, mejores resultados y un cliente feliz que recomienda.</p></div>
+  <div class="cv">
+    <div data-in=".9" data-a="pop"><i>🎯</i><b>Plan a su medida</b><span>Se adapta cada semana</span></div>
+    <div data-in="1.3" data-a="pop"><i>⌚</i><b>Todo su progreso</b><span>Con sus relojes y sensores</span></div>
+    <div data-in="1.7" data-a="pop"><i>🏆</i><b>Comunidad</b><span>Clubs, desafíos, rankings</span></div>
+    <div data-in="2.1" data-a="pop"><i>🛠️</i><b>Equipo al día</b><span>Software, mantención, manual</span></div></div></div></section>
 
-<!-- 6 Community (28–34) -->
-<section class="sc" id="s6" data-t="28" data-e="34"><div class="split">
-  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 03</div>
-    <h2 data-in=".3">Una comunidad<br>que engancha.</h2>
-    <p data-in=".8">Clubs, desafíos y rankings en vivo: competir, compartir y volver cada día.</p>
-    <div class="chips" data-in="1.4"><span>🤝 Clubs</span><span>🏆 Desafíos</span><span>⚡ Ranking en vivo</span><span>❤️ Kudos</span></div></div>
-  <div class="ph dk" data-in=".2" data-a="up"><div class="bar"><svg viewBox="200 92 1600 352"><use href="#lg"/></svg><b style="font-size:11px;color:#FDCC0D">● LIVE</b></div>
-    <div class="p"><div class="lbl">Ranking en vivo · Intervalos 5K</div>
-      <div class="board" id="board6"></div>
-      <div class="chal"><b>🏆 Desafío 50 km de noviembre</b><div class="t"><i id="ch6"></i></div><div style="font-size:11px;color:#9AA3AF;margin-top:6px"><span id="km6">0</span>/50 km</div></div>
-      <div class="clubrow"><span>Runners<br>Santiago</span><span>Strength<br>Crew</span><span>40+<br>Activos</span></div><div class="chal" style="display:flex;gap:10px;align-items:center"><span style="width:30px;height:30px;border-radius:50%;background:#E4572E;display:grid;place-items:center;font-size:10px;font-weight:800">CR</span><div style="flex:1;font-size:11px"><b style="font-size:13px">Camila R. · nuevo récord 🏔️</b><br><span style="color:#9AA3AF">2,8 km · 25:10 · MYPOWER</span></div><span style="color:#D7263D;font-size:18px">❤</span><b>24</b></div></div></div></div></section>
+<!-- 6 Model (28–34) -->
+<section class="sc" id="s6" data-t="28" data-e="34"><div class="split" style="gap:80px">
+  <div class="tx" style="width:640px"><div class="kick" data-in=".1">Para MARTOM · el modelo</div>
+    <h2 data-in=".3" style="font-size:62px">De una venta única<br>a <span class="blue">ingresos<br>recurrentes</span>.</h2></div>
+  <div class="chart">
+    <div class="row"><em data-in=".6">Hoy</em><div class="bars" id="bh"></div></div>
+    <div class="row"><em data-in="1.2">Con la app</em><div class="bars" id="ba"></div></div>
+    <div class="leg" data-in="2.6"><span><i style="background:#2E7BFF"></i>Equipo</span><span><i style="background:#FDCC0D"></i>MARTOM+</span><span><i style="background:#108474"></i>Accesorios y upgrades</span><span><i style="background:#9B5DE5"></i>Nutrición y recovery</span></div></div></div></section>
 
-<!-- 7 Equipment (34–38) -->
-<section class="sc" id="s7" data-t="34" data-e="38"><div class="split">
-  <div class="prod" data-in=".1" data-a="scale"><img src="https://cdn.shopify.com/s/files/1/0865/7898/7329/files/1.jpg?v=1750446858&width=900" alt="">
-    <div class="nc" data-in=".8" data-a="pop" style="left:150px;top:30px"><span class="i" style="background:#E3F3F0">✅</span><div><b>Software v2.4</b><span>Actualizado · modo Trail nuevo</span></div></div>
-    <div class="nc" data-in="1.3" data-a="pop" style="left:190px;top:220px"><span class="i" style="background:#FFF3D6">🛠️</span><div><b>Mantención en 22 km</b><span>Lubricar banda · pedir en 1 toque</span></div></div>
-    <div class="nc" data-in="1.8" data-a="pop" style="left:150px;top:410px"><span class="i" style="background:#E4EEFC">📘</span><div><b>Manual digital</b><span>Instalación y técnica animada</span></div></div></div>
-  <div class="tx"><div class="kick" data-in=".1">Para el cliente · 04</div><h2 data-in=".3">Su equipo,<br>siempre al día.</h2></div></div></section>
-
-<!-- 8 Benefits for MARTOM (38–48) -->
-<section class="sc" id="s8" data-t="38" data-e="48">
-  <div style="position:absolute;left:180px;top:120px" data-in=".1"><div class="kick">Para MARTOM</div><div style="font-size:40px;font-weight:800;margin-top:10px">El valor real de la app</div></div>
-  <div class="ben" data-b="0"><div class="ic">❤️</div><div><div class="n">01 · FIDELIZACIÓN</div><h2>Clientes que vuelven cada día.</h2><p>El equipo se usa más, la satisfacción sube y las devoluciones bajan.</p></div></div>
-  <div class="ben" data-b="1"><div class="ic">🚀</div><div><div class="n">02 · NUEVOS PRODUCTOS</div><h2>Un canal propio de ventas.</h2><p>MARTOM+, accesorios, proteína, nutrición y recovery: ingresos recurrentes.</p></div></div>
-  <div class="ben" data-b="2"><div class="ic">🤝</div><div><div class="n">03 · COMUNIDAD</div><h2>Embajadores que atraen clientes.</h2><p>Clubs, desafíos y referidos convierten a los dueños en la mejor publicidad.</p></div></div>
-  <div class="ben" data-b="3"><div class="ic">🛡️</div><div><div class="n">04 · CONFIANZA</div><h2>Calidad que se siente.</h2><p>Manual digital, mantención y soporte: el cliente confía en su MARTOM.</p></div></div>
-  <div class="ben" data-b="4"><div class="ic">📣</div><div><div class="n">05 · MARKETING</div><h2>Cada entreno compartido es publicidad.</h2><p>Contenido real de clientes reales, más datos para conocer mejor el mercado.</p></div></div>
+<!-- 8 Benefits for MARTOM (34–48) -->
+<section class="sc" id="s8" data-t="34" data-e="48">
+  <div style="position:absolute;left:180px;top:120px" data-in=".1"><div class="kick">Para MARTOM</div><div style="font-size:40px;font-weight:800;margin-top:10px">Por qué la app es un negocio</div></div>
+  <div class="ben" data-b="0"><div class="ic">❤️</div><div><div class="n">01 · FIDELIZACIÓN</div><h2>Clientes que se quedan.</h2><p>Uso diario, más satisfacción, menos devoluciones y más recompra.</p></div></div>
+  <div class="ben" data-b="1"><div class="ic">📣</div><div><div class="n">02 · MARKETING</div><h2>Clientes que venden por nosotros.</h2><p>Entrenos compartidos, referidos y contenido real: marketing orgánico.</p></div></div>
+  <div class="ben" data-b="2"><div class="ic">🛒</div><div><div class="n">03 · VENTA CRUZADA</div><h2>Un canal de venta propio.</h2><p>Accesorios, upgrades, proteína, nutrición y recovery, directo en la app.</p></div></div>
+  <div class="ben" data-b="3"><div class="ic">📊</div><div><div class="n">04 · DATOS</div><h2>Conocemos a cada cliente.</h2><p>Uso real e intereses: campañas precisas y mejores productos.</p></div></div>
+  <div class="ben" data-b="4"><div class="ic">🌎</div><div><div class="n">05 · GO-TO-MARKET</div><h2>Lista para nuevos mercados.</h2><p>Bilingüe y escalable: la comunidad llega a cada nuevo país antes que la tienda.</p></div></div>
   <div class="dots" id="dots8"><i></i><i></i><i></i><i></i><i></i></div></section>
 
 <!-- 9 Claim (48–52) -->
 <section class="sc" id="s9" data-t="48" data-e="52"><div class="center" style="gap:0">
-  <div class="w" data-in=".1" data-a="up">Fidelizar.</div><div class="w blue" data-in=".9" data-a="up">Atraer.</div><div class="w" style="color:var(--star)" data-in="1.7" data-a="up">Convencer.</div></div></section>
+  <div class="w" data-in=".1" data-a="up">Fidelizar.</div><div class="w blue" data-in=".9" data-a="up">Facturar.</div><div class="w" style="color:var(--star)" data-in="1.7" data-a="up">Escalar.</div></div></section>
 
-<!-- 10 Logo (52–57) -->
+<!-- 10 Logo (52–57.2) -->
 <section class="sc" id="s10" data-t="52" data-e="57.2"><div id="glow" data-in="0" data-a="fade" data-d="1.2"></div><div class="center">
   <svg class="logo" viewBox="200 92 1600 352" style="width:1100px" data-in="0" data-a="logo" data-d="1.1"><use href="#lg"/></svg></div></section>
 
@@ -204,8 +199,8 @@ body.export #start,body.export #pbar{display:none}
 </div></div>
 
 <div id="start"><svg class="logo" viewBox="200 92 1600 352"><use href="#lg"/></svg>
-  <button class="bt" id="play">▶ Reproducir tráiler (57 s · con música)</button>
-  <p>Vista previa del tráiler. El archivo de video final está en <b>video/martom-trailer-es.mp4</b>.</p></div>
+  <button class="bt" id="play">▶ Reproducir pitch (57 s · con música)</button>
+  <p>Vista previa del pitch. El archivo de video final está en <b>video/martom-trailer-es.mp4</b>.</p></div>
 
 <script>
 const LEN = 57.2;
@@ -231,23 +226,20 @@ const count = (id, to, lt, t0, d = 1.4, dec = 0) => { const e = document.getElem
 
 const FX = {
   s2(lt) { const p = clamp((lt - 2.2) / 1.6); $('#p2').style.filter = `grayscale(${p}) brightness(${1 - .45 * p})`; },
-  s3(lt) { const p = ease(clamp((lt - 1.6) / 1.6)); $('#ring3').setAttribute('stroke-dashoffset', 213.6 * (1 - .75 * p));
+  s3(lt) { const p = ease(clamp((lt - 3) / .8)); document.querySelectorAll('#s3 .ref').forEach(r => r.style.borderColor = `rgba(46,123,255,${.25 + .75 * p})`); },
+  s4(lt) { const p = ease(clamp((lt - 1.6) / 1.6)); $('#ring3').setAttribute('stroke-dashoffset', 213.6 * (1 - .75 * p));
     count('c3a', 3, lt, 1.6); count('c3b', 47, lt, 1.6); count('c3c', 412, lt, 1.6); count('c3d', 6, lt, 1.6);
     $('#c3e').textContent = Math.round(9 - 6 * ease(clamp((lt - 2.2) / 1.6))); },
-  s4(lt) { document.querySelectorAll('#wiz .opt').forEach((o, i) => o.classList.toggle('on', (i === 0 && lt > 1.2) || (o.dataset.k === '1' && lt > 2.2))); },
-  s5(lt) { $('#hr5').textContent = Math.round(72 + 70 * ease(clamp((lt - .6) / 2)) + 3 * Math.sin(lt * 7));
-    const pts = []; for (let x = 0; x <= 300; x += 3) { const ph = (x / 300 * 4 + lt * 1.6) % 1; const y = ph > .42 && ph < .46 ? 10 : ph > .46 && ph < .5 ? 70 : 42 + 4 * Math.sin(ph * 30); pts.push(x + ',' + y); }
-    $('#ecg').setAttribute('points', pts.join(' ')); count('c5a', 18.4, lt, .8, 1.6, 1); count('c5b', 1840, lt, .8, 1.6); },
   s6(lt) {
-    const R = [['Camila R.','#E4572E',1.05],['Matías G.','#7B2CBF',1],['Coach Nico','#2A2D33',.97],['TÚ','#0566E0',1.32]];
-    const pts = R.map((r, i) => 120 - i * 9 + r[2] * lt * 14 + 2 * Math.sin(lt * 3 + i));
-    const order = pts.map((p, i) => [p, i]).sort((a, b) => b[0] - a[0]);
-    const b = $('#board6');
-    if (!b.children.length) b.innerHTML = '<h5>1.284 EN LÍNEA</h5>' + R.map((r, i) => `<div class="br ${i === 3 ? 'me' : ''}" id="b6${i}"><span class="r"></span><span class="a" style="background:${r[1]}">${r[0].split(' ').map(x => x[0]).join('')}</span><span style="flex:1">${r[0]}</span><b class="v"></b></div>`).join('');
-    order.forEach(([p, i], pos) => { const el = document.getElementById('b6' + i); el.style.top = (24 + pos * 44) + 'px'; el.querySelector('.r').textContent = pos + 1; el.querySelector('.v').textContent = Math.round(p); });
-    const c = ease(clamp((lt - 1) / 3)); $('#ch6').style.width = (20 + 58 * c) + '%'; $('#km6').textContent = Math.round(10 + 29 * c); },
+    const bh = $('#bh'), ba = $('#ba');
+    if (!bh.children.length) { for (let m = 0; m < 12; m++) { bh.insertAdjacentHTML('beforeend', '<div class="c"><i style="background:#2E7BFF"></i></div>');
+      ba.insertAdjacentHTML('beforeend', '<div class="c"><i style="background:#2E7BFF"></i><i style="background:#FDCC0D"></i><i style="background:#108474"></i><i style="background:#9B5DE5"></i></div>'); } }
+    [...bh.children].forEach((c, m) => { c.children[0].style.height = (m === 0 ? 170 * ease(clamp((lt - .7) / .5)) : 0) + 'px'; });
+    [...ba.children].forEach((c, m) => { const p = ease(clamp((lt - 1.3 - m * .12) / .5)), g = m / 11;
+      const h = [m === 0 ? 120 : 0, 22 + 34 * g, m % 3 === 1 ? 26 + 20 * g : 8 + 10 * g, m > 3 ? 10 + 30 * g : 0];
+      [...c.children].forEach((i, k) => i.style.height = h[k] * p + 'px'); }); },
   s8(lt) {
-    const per = 1.9, t0 = 1.0;
+    const per = 2.6, t0 = .7;
     document.querySelectorAll('#s8 .ben').forEach((el, i) => {
       const s = t0 + i * per, inP = ease(clamp((lt - s) / .55)), outP = i < 4 ? ease(clamp((lt - s - per + .35) / .45)) : 0;
       el.style.opacity = inP * (1 - outP); el.style.transform = `translateX(${(1 - inP) * 160 - outP * 160}px)`;

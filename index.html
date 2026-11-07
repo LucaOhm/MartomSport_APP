@@ -518,7 +518,7 @@ svg.logo{display:block;overflow:visible}
 /* =====================================================================
    MARTOM App – MVP demo (single file, no backend, data in localStorage)
    ===================================================================== */
-const VERSION = 'v0.6';
+const VERSION = 'v0.7';
 const SHOP = 'https://martomsport.com';
 const CDN = 'https://cdn.shopify.com/s/files/1/0865/7898/7329/files/';
 const WA = 'https://wa.me/56971480332';
@@ -917,53 +917,53 @@ const SOON = {
 const TW = () => ({ t:1, p:'run5k', m:'smartrun', min:21, kcal:268, km:4.3, xp:260 });
 const TOUR = [
   {tab:'home', intro:true,
-    t:N('The MARTOM app – in 4 areas','La app MARTOM en 4 áreas'),
+    t:N('Your MARTOM, now with its own app','Tu MARTOM, ahora con su propia app'),
     b:N('A short interactive tour. Just tap where the hand points.','Un recorrido corto e interactivo. Solo toca donde indica la mano.'),
-    k:N('About 2 minutes','Aprox. 2 minutos')},
+    k:N('Train smarter at home – about 2 minutes','Entrena mejor en casa · aprox. 2 minutos')},
   {tab:'home', sel:'#h-monitor', tap:'#h-devices [data-a="devices"]',
     t:N('1 · Dashboard: all progress at a glance','1 · Dashboard: todo el progreso de un vistazo'),
     b:N('Minutes, km, calories and heart rate – tracked automatically. Tap "Connect".','Minutos, km, calorías y pulso, registrados automáticamente. Toca "Conectar".'),
-    k:N('Monitoring & tracking','Monitoreo y seguimiento')},
+    k:N('See your progress every day','Ves tu progreso cada día')},
   {tab:'home', lay:() => [{type:'devices'}], sel:'#dev-garmin', tap:'#dev-garmin button', fx:'connect',
     t:N('Works with existing watches & sensors','Funciona con relojes y sensores existentes'),
     b:N('Apple Health, Garmin, Strava, Polar, Fitbit, heart-rate straps. Tap "Connect" on Garmin.','Apple Health, Garmin, Strava, Polar, Fitbit, bandas de pulso. Toca "Conectar" en Garmin.'),
-    k:N('Open ecosystem','Ecosistema abierto')},
+    k:N('Keep the watch you already have','Usa el reloj que ya tienes')},
   {tab:'train', ttab:'plan', sel:'#tp-create', tap:'#tp-create',
     t:N('2 · Training: a plan just for me','2 · Entrenar: un plan solo para mí'),
     b:N('Individual plans based on goal, level, time and equipment. Tap "Create my personal plan".','Planes individuales según objetivo, nivel, tiempo y equipos. Toca "Crear mi plan personal".'),
-    k:N('Focus: individual training','Foco: entrenamiento individual')},
+    k:N('No more guessing what to train','Nunca más dudar qué entrenar')},
   {tab:'train', ttab:'plan', lay:() => { ui.wz = {goal:'run', level:'1', days:'4', min:'30', care:'none'}; return [{type:'wizard'}]; }, sel:'#wiz-go', tap:'#wiz-go', fx:'genplan',
     t:N('4 questions, one personal plan','4 preguntas, un plan personal'),
     b:N('Goal, level, days, time, limitations – the plan adapts every week. Tap "Create my plan".','Objetivo, nivel, días, tiempo, limitaciones: el plan se adapta cada semana. Toca "Crear mi plan".'),
-    k:N('Personalisation','Personalización')},
+    k:N('A plan that fits your life','Un plan que se adapta a tu vida')},
   {tab:'train', ttab:'plan', confetti:true, ensurePlan:true, sel:'#tp-week .istoday', tap:'#tp-week .istoday [data-a="startPlan"]',
     t:N('The plan is ready','El plan está listo'),
     b:N('Every day knows the workout and the machine. Tap "Start" for today.','Cada día sabe qué entreno y qué equipo. Toca "Iniciar" para hoy.'),
-    k:N('Planned vs. completed workouts','Entrenos planificados vs. completados')},
+    k:N('Today\'s workout, one tap away','El entreno de hoy, a un toque')},
   {player:'run5k', sel:'#pl-anim', next:true,
     t:N('Guided like a personal trainer','Guiado como con un entrenador personal'),
     b:N('Exercise animation, target, live metrics and a live ranking. Connected machines adjust automatically.','Animación del ejercicio, objetivo, métricas en vivo y ranking en vivo. Los equipos conectados se ajustan solos.'),
-    k:N('Minutes trained per owner','Minutos entrenados por dueño')},
+    k:N('A coach at home, every day','Un coach en casa, todos los días')},
   {tab:'community', ctab:'clubs', sel:'#cm-clubs .club', tap:'#cm-clubs .club [data-a="joinClub"]', fx:'join',
     t:N('3 · Community: find your people','3 · Comunidad: encuentra a tu gente'),
     b:N('Over 100 communities by sport, region and age. Tap "Join".','Más de 100 comunidades por deporte, región y edad. Toca "Unirme".'),
-    k:N('Community bonding','Vínculo con la comunidad')},
+    k:N('Train together, not alone','Entrena acompañado, no solo')},
   {tab:'community', ctab:'challenges', sel:'#cm-league', next:true,
     t:N('Compete & level up','Compite y sube de nivel'),
-    b:N('Weekly leagues, challenges, XP and badges – the competitive factor that brings people back every day.','Ligas semanales, desafíos, XP y medallas: el factor competitivo que hace volver cada día.'),
-    k:N('Gamification → retention','Gamificación → retención')},
+    b:N('Weekly leagues, challenges, XP and badges – motivation that keeps you going.','Ligas semanales, desafíos, XP y medallas: motivación para no parar.'),
+    k:N('Motivation that lasts','Motivación que dura')},
   {tab:'profile', sel:'#pf-gear', tap:'#pf-gear .gearcard',
     t:N('4 · Profile: my equipment','4 · Perfil: mis equipos'),
     b:N('Every MARTOM machine with its digital manual and monitoring. Tap the SMARTRUN.','Cada equipo MARTOM con su manual digital y monitoreo. Toca la SMARTRUN.'),
-    k:N('Registered machines','Equipos registrados')},
+    k:N('Everything about your machine in one place','Todo sobre tu equipo en un lugar')},
   {tab:'profile', lay:() => [{type:'machine', id:'smartrun'}], mtab:'status', sel:'#mc-status', next:true,
     t:N('Machine monitoring','Monitoreo del equipo'),
-    b:N('Health score, usage, software version and next maintenance – plus the digital manual. Trust in the product, fewer support calls.','Puntaje de salud, uso, versión de software y próxima mantención, además del manual digital. Confianza en el producto y menos llamadas a soporte.'),
-    k:N('Support tickets per unit','Tickets de soporte por unidad')},
+    b:N('Health score, usage, software version and next maintenance – plus the digital manual. Your machine always in top shape.','Puntaje de salud, uso, versión de software y próxima mantención, además del manual digital. Tu equipo siempre en perfecto estado.'),
+    k:N('Peace of mind, no surprises','Tranquilidad, sin sorpresas')},
   {tab:'home', final:true, confetti:true,
     t:N('Monitoring · Training · Community · Equipment','Monitoreo · Entrenamiento · Comunidad · Equipos'),
     b:N('Coming soon: nutrition and recovery with experts. Now explore the app freely.','Próximamente: nutrición y recovery con expertos. Ahora explora la app libremente.'),
-    k:N('Bind · Acquire · Convince','Fidelizar · Atraer · Convencer')},
+    k:N('Train · Track · Belong','Entrenar · Medir · Pertenecer')},
 ];
 
 /* ---------- State ---------- */
@@ -1782,17 +1782,17 @@ function renderPanel() {
   const cyc = [tt('Discover','Descubrir'),tt('Buy','Comprar'),tt('Set up','Instalar'),tt('Train','Entrenar'),tt('Maintain','Mantener'),tt('Upgrade','Mejorar'),tt('Refer','Recomendar')];
   const pill = (i, t, d) => `<div class="pillar"><span class="ic">${ic(i)}</span><div><b>${t}</b><span>${d}</span></div></div>`;
   $('#panel').innerHTML = `<div class="pn-brand">${LOGO(30)}<small>App · MVP ${VERSION}</small></div>
-    <h1>${tt('One app for the whole MARTOM customer lifecycle.','Una app para todo el ciclo de vida del cliente MARTOM.')}</h1>
-    <p class="lead">${tt('Training planner, machine demos, smart upselling and a gamified community – free to start, MARTOM+ to go further.','Planificador de entrenamiento, demos de equipos, upselling inteligente y una comunidad gamificada: gratis para empezar, MARTOM+ para ir más lejos.')}</p>
+    <h1>${tt('Your MARTOM. Your plan. Your community.','Tu MARTOM. Tu plan. Tu comunidad.')}</h1>
+    <p class="lead">${tt('A personal training plan, all your progress, a community that motivates you and your machine always up to date – free to start, MARTOM+ to go further.','Un plan de entrenamiento personal, todo tu progreso, una comunidad que te motiva y tu equipo siempre al día: gratis para empezar, MARTOM+ para ir más lejos.')}</p>
     <div class="pn-actions"><button class="btn primary" data-a="tour">${ic('play')} ${TS == null ? tt('Interactive demo','Demo interactiva') : tt('Restart demo','Reiniciar demo')}</button>
       <div class="lang"><button class="${S.lang === 'en' ? 'on' : ''}" data-a="lang" data-v="en">EN</button><button class="${S.lang === 'es' ? 'on' : ''}" data-a="lang" data-v="es">ES</button></div></div>
     <div class="cycle">${cyc.map((c, i) => `<span class="${i >= 2 ? 'b' : ''}">${c}</span>`).join('')}</div>
     <div id="tour-slot"></div>
     ${TS == null ? `<div class="pillars">
-      ${pill('chart', tt('1 · Monitoring dashboard','1 · Dashboard de monitoreo'), tt('All progress in one place – connected to watches & sensors.','Todo el progreso en un lugar, conectado a relojes y sensores.'))}
-      ${pill('train', tt('2 · Individual training','2 · Entrenamiento individual'), tt('A personal plan per goal, level, time and equipment.','Un plan personal según objetivo, nivel, tiempo y equipos.'))}
-      ${pill('users', tt('3 · Community & gamification','3 · Comunidad y gamificación'), tt('Clubs, leagues and challenges that bring people back.','Clubs, ligas y desafíos que hacen volver.'))}
-      ${pill('tool', tt('4 · Equipment monitoring','4 · Monitoreo de equipos'), tt('Digital manual, software status and maintenance.','Manual digital, estado del software y mantención.'))}
+      ${pill('chart', tt('1 · All your progress','1 · Todo tu progreso'), tt('Minutes, km, calories and heart rate – with your watch & sensors.','Minutos, km, calorías y pulso, con tu reloj y sensores.'))}
+      ${pill('train', tt('2 · Your personal plan','2 · Tu plan personal'), tt('Built for your goal, level, time and machines.','Hecho para tu objetivo, nivel, tiempo y equipos.'))}
+      ${pill('users', tt('3 · Your community','3 · Tu comunidad'), tt('Clubs, leagues and challenges that keep you motivated.','Clubs, ligas y desafíos que te mantienen motivado.'))}
+      ${pill('tool', tt('4 · Your machine, always ready','4 · Tu equipo, siempre listo'), tt('Digital manual, updates and maintenance reminders.','Manual digital, actualizaciones y avisos de mantención.'))}
     </div>` : ''}
     <p class="pn-note">${tt('Clickable prototype – no backend, all data stays in this browser. Product names, prices and images from martomsport.com; mood photos from Unsplash; users, coaches, offers and subscription prices are fictional.','Prototipo navegable: sin backend, los datos quedan en este navegador. Productos, precios e imágenes de martomsport.com; fotos de ambiente de Unsplash; usuarios, coaches, ofertas y precios de suscripción son ficticios.')}</p>`;
 }
@@ -1808,7 +1808,7 @@ function tourCard() {
   const primary = s.intro ? tt("Let's start",'Comenzar') : last ? tt('Explore the app','Explorar la app') + ' →' : s.next ? tt('Next','Siguiente') : tt('Skip step','Saltar paso');
   return `<div class="tour-card"><div class="top"><span>Demo · ${TS + 1}/${TOUR.length}</span>${last ? '' : `<button class="skip" data-a="tourEnd">${tt('Skip demo','Saltar demo')}</button>`}</div>
     ${s.intro || last ? `<div class="lg">${LOGO(26, 'logo-in')}</div>` : ''}
-    <h3>${esc(L(s.t))}</h3><p>${esc(L(s.b))}</p>${struct}<div class="kpi">📈 ${esc(L(s.k))}</div>
+    <h3>${esc(L(s.t))}</h3><p>${esc(L(s.b))}</p>${struct}<div class="kpi">✨ ${esc(L(s.k))}</div>
     ${s.tap ? `<div class="inst">👆 ${tt('Tap the highlighted element','Toca el elemento marcado')}</div>` : ''}
     <div class="dts">${TOUR.map((_, i) => `<i class="${i <= TS ? 'on' : ''}"></i>`).join('')}</div>
     <div class="row">${TS > 0 ? `<button class="btn line sm" data-a="tourGo" data-v="${TS - 1}">${ic('back','s')}</button>` : ''}
